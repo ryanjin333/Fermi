@@ -6,14 +6,14 @@ const styles = StyleSheet.create({
 
     },
     mainTitle: {
-        fontSize: 32,
+        fontSize: 28,
         fontWeight: '800',
-        color: '#516395'
     },
     subTitle: {
         fontSize: 16,
         fontWeight: '500',
         color: '#A6A6A6',
+        marginBottom: 20
     }
 })
 

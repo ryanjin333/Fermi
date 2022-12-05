@@ -1,11 +1,33 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './src/HomeScreen';
+import SettingsScreen from './src/SettingsScreen';
+import TestScreen from './src/TestScreen';
 
-export default function App() {
+export default App = () => {
+
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View>
-      <HomeScreen />
-    </View>
+    <NavigationContainer>
+       <Stack.Navigator>
+        <Stack.Screen 
+          name="Home"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+        />
+        <Stack.Screen
+          name="Test"
+          component={TestScreen}
+          //options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
