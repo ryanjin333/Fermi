@@ -5,12 +5,18 @@ import styles from "./styles";
 
 const ModeItem = (props) => {
 
-    const { title, subtitle, startColor, endColor, type } = props.mode;
+    const { title, subtitle, startColor, endColor } = props.mode;
     const navigation = useNavigation();
 
     return (
     <View style={styles.modeItemContainer}>
-        <TouchableOpacity style={styles.modeItemButton} onPress={() => navigation.navigate("Test", { type: type})}>
+        <TouchableOpacity style={styles.modeItemButton} onPress={() => 
+            navigation.navigate("Test", {
+                type: title,
+                startColor: startColor,
+                endColor: endColor,
+            })
+        }>
             <LinearGradient
                 colors={[startColor, endColor]}
                 style={styles.modeItemBackground}

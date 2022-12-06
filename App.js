@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './src/HomeScreen';
 import SettingsScreen from './src/SettingsScreen';
 import TestScreen from './src/TestScreen';
+import InfoScreen from './src/InfoScreen';
 
 export default App = () => {
 
@@ -24,6 +25,11 @@ export default App = () => {
         <Stack.Screen
           name="Test"
           component={TestScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Info"
+          component={InfoScreen}
           //options={{headerShown: false}}
         />
       </Stack.Navigator>
