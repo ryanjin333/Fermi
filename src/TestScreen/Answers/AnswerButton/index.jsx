@@ -29,9 +29,25 @@ const AnswerButton = () => {
         }
     }
 
+    //Change to exponent
+    function decode_superscript(text) {
+        var map = {
+            "0":"⁰","1":"¹", "2":"²",  "3":"³", "4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","-":"⁻"};
+        var charArray = text.toString().split("");
+        for(var i = 0; i < charArray.length; i++) {
+            if( map[charArray[i].toLowerCase()] ) {
+                charArray[i] = map[charArray[i]];
+            }
+        }
+        text = charArray.join("");
+        return text;
+    }
+
+
+
     return (
         <TouchableOpacity style={styles.answerButton} onPress={answerTapped}>
-            <Text style={styles.answerText}>{currentAnswer}</Text>
+            <Text style={styles.answerText}>10{decode_superscript(currentAnswer)}</Text>
         </TouchableOpacity>
     )
 }
