@@ -7,6 +7,9 @@ const initialState = {
     currentQuestion: "",
     currentAnswer: 0,
     questions: fermi.questions,
+    correctButtonId: 0,
+    choices: [],
+    score: 0,
 }
 
 const testScreenSlice = createSlice({
@@ -14,8 +17,9 @@ const testScreenSlice = createSlice({
     initialState: initialState,
     reducers: {
         resetAllQ: (state) => {
-            state.questionNumber = 1;
+            state.questionNumber = 0;
             state.questions = fermi.questions;
+            state.score = 0;
         },
         setMaxQuestions: (state, action) => {
             state.maxQuestions = action.payload;
@@ -27,9 +31,34 @@ const testScreenSlice = createSlice({
             state.currentQuestion = fermiKeys[randFermiIndex];
             state.currentAnswer = fermiValues[randFermiIndex];
             state.questionNumber += 1;
-            
+
+            state.correctButtonId = Math.floor(Math.random() * 3);
+            if (state.correctButtonId == 0) {
+                state.choices = [
+                    state.currentAnswer,
+                    state.currentAnswer + 1,
+                    state.currentAnswer + 2,
+                ]
+            }
+            else if (state.correctButtonId == 1) {
+                state.choices = [
+                    state.currentAnswer - 1,
+                    state.currentAnswer,
+                    state.currentAnswer + 1,
+                ]
+            }
+            else {
+                state.choices = [
+                    state.currentAnswer - 2,
+                    state.currentAnswer - 1,
+                    state.currentAnswer,
+                ]
+            }
             //TODO: Delete not working
             delete state.questions[state.currentQuestion];
+        },
+        increaseScore: (state) => {
+            state.score += 1;
         }
     }
 })
@@ -37,5 +66,6 @@ const testScreenSlice = createSlice({
 export const {
     resetAllQ, 
     setMaxQuestions, 
-    getQuestion } = testScreenSlice.actions;
+    getQuestion, 
+    increaseScore } = testScreenSlice.actions;
 export default testScreenSlice.reducer;

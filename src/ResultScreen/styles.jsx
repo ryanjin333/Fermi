@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         padding: 40,
     },
     redoButton: {
-        marginTop: 600,
+        position: 'absolute',
+        marginTop: 675,
         height: 60,
         width: '100%',
         borderRadius: 20,   
@@ -23,7 +24,6 @@ const styles = StyleSheet.create({
     redoText: {
         fontSize: 19,
         fontWeight: '700',
-        color: '#EA8D8D',
     },  
 
 })

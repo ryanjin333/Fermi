@@ -5,9 +5,9 @@ import AnswerButton from "./AnswerButton";
 const Answers = () => {
     return (
         <View style={styles.answersContainer}>
-            <AnswerButton />
-            <AnswerButton />
-            <AnswerButton />
+            <AnswerButton id={0}/>
+            <AnswerButton id={1}/>
+            <AnswerButton id={2}/>
         </View>
     )
 }

@@ -2,26 +2,26 @@ import { Image, View, TouchableOpacity, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
-import { getQuestion } from "../../../TestScreen/TestScreenSlice";
+import { getQuestion, setMaxQuestions } from "../../../TestScreen/TestScreenSlice";
 import styles from "./styles";
 import fermi from "../../../fermi";
 
 const ModeItem = (props) => {
 
     //Navigation
-    const { title, subtitle, startColor, endColor } = props.mode;
+    const { title, subtitle, startColor, endColor, length } = props.mode;
     const navigation = useNavigation();
 
 
     //Redux
     const dispatch = useDispatch();
-    const currentQuestion = useSelector((state) => state.testScreen.currentQuestion);
     const answerTapped = () => {
         navigation.navigate("Test", {
             type: title,
             startColor: startColor,
             endColor: endColor,
         });
+        dispatch(setMaxQuestions(length));
         dispatch(getQuestion());
     }
     

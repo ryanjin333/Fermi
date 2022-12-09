@@ -1,8 +1,8 @@
 import { View, TouchableOpacity, Image, Text } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
-import { resetAllQ } from "../TestScreenSlice";
+import { useDispatch } from "react-redux";
+import { resetAllQ, getQuestion } from "../TestScreenSlice";
 import styles from "./styles";
 
 const Nav = () => {
@@ -18,6 +18,8 @@ const Nav = () => {
         dispatch(resetAllQ());
     }
 
+
+
     return (
         <View style={styles.navContainer}>
             <TouchableOpacity style={styles.exitContainer} onPress={exitTapped}>
@@ -28,7 +30,10 @@ const Nav = () => {
                 duration={120}
                 colors={"#ffffff"}
                 colorsTime={10}
-                onComplete={() => ({ shouldRepeat: true, delay: 2 })}
+                onComplete={() => {
+                    dispatch(getQuestion())
+                    return { shouldRepeat: true, delay: 1.5 }
+                }}
                 size={80}
                 strokeWidth={8}
                 trailColor={"#ffffff30"}
