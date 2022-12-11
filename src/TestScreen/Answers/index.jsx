@@ -1,13 +1,45 @@
-import { View } from "react-native";
+import { useState } from "react";
+import { View, Text, TextInput } from "react-native";
+import { useSelector } from "react-redux";
+import { useRoute } from "@react-navigation/native";
 import styles from "./styles";
 import AnswerButton from "./AnswerButton";
 
 const Answers = () => {
+
+    //Navigation
+    const route = useRoute();
+
+    //Redux
+    const answered = useSelector((state) => state.testScreen.answered);
+    const correct = useSelector((state) => state.testScreen.correct);
+
+    //Native Hooks
+
     return (
         <View style={styles.answersContainer}>
-            <AnswerButton id={0}/>
-            <AnswerButton id={1}/>
-            <AnswerButton id={2}/>
+            { route.params.type === "Easy" &&
+                <View style={styles.multipleChoiceContainer}>
+                <AnswerButton id={0}/>
+                <AnswerButton id={1}/>
+                <AnswerButton id={2}/>
+                { answered &&
+                    <Text style={styles.result}>{ correct ? "You are correct!" : "You are incorrect."}</Text>
+                }
+            </View>
+            }
+            { route.params.type !== "Easy" &&
+                <View style={styles.fillInContainer}>
+                    <Text style={styles.fillInText}>Ten to the  </Text>
+                    <TextInput 
+                        style={styles.input}
+                        keyboardType='number-pad'
+                        returnKeyType="done"
+                    />
+                    <Text style={styles.fillInText}>  th power.</Text>
+                </View>
+                
+            }
         </View>
     )
 }

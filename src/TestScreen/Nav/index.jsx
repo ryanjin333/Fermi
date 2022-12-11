@@ -1,8 +1,8 @@
 import { View, TouchableOpacity, Image, Text } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
-import { resetAllQ, getQuestion } from "../TestScreenSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { resetAllQ, toggleAnswered } from "../TestScreenSlice";
 import styles from "./styles";
 
 const Nav = () => {
@@ -12,6 +12,8 @@ const Nav = () => {
 
     //Redux
     const dispatch = useDispatch();
+    const answered = useSelector((state) => state.testScreen.answered);
+    const timerKey = useSelector((state) => state.testScreen.timerKey);
 
     const exitTapped = () => {
         navigation.navigate("Home");
@@ -26,13 +28,13 @@ const Nav = () => {
                 <Image style={styles.exitImage} source={require("../../../assets/Exit.png")}/>
             </TouchableOpacity>
             <CountdownCircleTimer
-                isPlaying={true}
+                isPlaying={answered ? false : true}
                 duration={120}
+                key={timerKey}
                 colors={"#ffffff"}
                 colorsTime={10}
                 onComplete={() => {
-                    dispatch(getQuestion())
-                    return { shouldRepeat: true, delay: 1.5 }
+                    dispatch(toggleAnswered())
                 }}
                 size={80}
                 strokeWidth={8}

@@ -9,7 +9,11 @@ const initialState = {
     questions: fermi.questions,
     correctButtonId: 0,
     choices: [],
+    booleanChoices: [true, true, true],
     score: 0,
+    answered: false,
+    correct: false,
+    timerKey: 0,
 }
 
 const testScreenSlice = createSlice({
@@ -54,11 +58,23 @@ const testScreenSlice = createSlice({
                     state.currentAnswer,
                 ]
             }
+            state.answered = false;
+            state.booleanChoices = [true, true, true];
+            state.timerKey += 1;
             //TODO: Delete not working
             delete state.questions[state.currentQuestion];
         },
         increaseScore: (state) => {
             state.score += 1;
+        },
+        toggleAnswered: (state) => {
+            state.answered = true;
+            state.booleanChoices.forEach((val, i) => {
+                i === state.correctButtonId ? state.booleanChoices[i] = true : state.booleanChoices[i] = false;
+            })
+        },
+        setCorrectState: (state, action) => {
+            state.correct = action.payload;
         }
     }
 })
@@ -67,5 +83,7 @@ export const {
     resetAllQ, 
     setMaxQuestions, 
     getQuestion, 
-    increaseScore } = testScreenSlice.actions;
+    increaseScore,
+    toggleAnswered,
+    setCorrectState } = testScreenSlice.actions;
 export default testScreenSlice.reducer;

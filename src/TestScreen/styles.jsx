@@ -7,9 +7,22 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     },
-    questionCounter: {
-        alignSelf: 'flex-start',
+    infoContainer: {
         marginTop: 235,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    continueButton: {
+        
+        width: 40,
+        height: 20,
+    },
+    continueImage: {
+        width: 40,
+        height: 20,
+    },
+    questionCounter: {
         fontSize: 16,
         color: 'white',
     },

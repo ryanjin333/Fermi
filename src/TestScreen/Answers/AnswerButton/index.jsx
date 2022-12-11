@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { resetAllQ, getQuestion, increaseScore } from "../../TestScreenSlice";
+import { toggleAnswered, setCorrectState, increaseScore } from "../../TestScreenSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "./styles";
 
@@ -17,20 +17,18 @@ const AnswerButton = ({id}) => {
     const currentAnswer = useSelector((state) => state.testScreen.currentAnswer);
     const choice = useSelector((state) => state.testScreen.choices[id]);
     const correctButtonId = useSelector((state) => state.testScreen.correctButtonId);
+    const answered = useSelector((state) => state.testScreen.answered);
+    const booleanChoice = useSelector((state) => state.testScreen.booleanChoices[id]);
 
     const answerTapped = () => {
-        if (questionNumber + 1 > maxQuestions) {
-            navigation.navigate("Result", {
-                startColor: route.params.startColor,
-                endColor: route.params.endColor,
-            });
+        if (id == correctButtonId) {
+            dispatch(increaseScore());
+            dispatch(setCorrectState(true));
         }
         else {
-            if (id == correctButtonId) {
-                dispatch(increaseScore());
-            }
-            dispatch(getQuestion());
+            dispatch(setCorrectState(false));
         }
+        dispatch(toggleAnswered());
     }
 
     //Change to exponent
@@ -49,7 +47,14 @@ const AnswerButton = ({id}) => {
     }
 
     return (
-        <TouchableOpacity style={styles.answerButton} onPress={answerTapped}>
+        <TouchableOpacity 
+            style={[
+                styles.answerButton,
+                {backgroundColor: booleanChoice ? '#ffffff' : '#ffffff50'}
+            ]} 
+            onPress={answerTapped}
+            disabled={answered}
+            >
             <Text style={styles.answerText}>10{encode_superscript(choice)}</Text>
         </TouchableOpacity>
     )

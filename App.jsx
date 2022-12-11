@@ -29,7 +29,7 @@ export default App = () => {
           <Stack.Screen
             name="Test"
             component={TestScreen}
-            options={{headerShown: false}}
+            options={{headerShown: false, gestureEnabled: false}}
           />
           <Stack.Screen
             name="Info"
@@ -39,7 +39,7 @@ export default App = () => {
           <Stack.Screen
             name="Result"
             component={ResultScreen}
-            options={{headerShown: false}}
+            options={{headerShown: false, gestureEnabled: false}}
           />
         </Stack.Navigator>
       </NavigationContainer>
