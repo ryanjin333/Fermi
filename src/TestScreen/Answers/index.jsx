@@ -28,19 +28,7 @@ const Answers = () => {
                 }
             </View>
             }
-            { route.params.type !== "Easy" &&
-                <View style={styles.fillInContainer}>
-                    <Text style={styles.fillInText}>Ten to the  </Text>
-                    <TextInput 
-                        style={styles.input}
-                        keyboardType='number-pad'
-                        returnKeyType="done"
-                    />
-                    <Text style={styles.fillInText}>  th power.</Text>
-                </View>
-                
-            }
-        </View>
+    </View>
     )
 }
 

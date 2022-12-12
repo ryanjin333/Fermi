@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useRef } from "react";
 import fermi from "../fermi";
 
 const initialState = {
@@ -64,18 +65,18 @@ const testScreenSlice = createSlice({
             //TODO: Delete not working
             delete state.questions[state.currentQuestion];
         },
-        increaseScore: (state) => {
-            state.score += 1;
+        increaseScore: (state, action) => {
+            state.score += action.payload;
         },
         toggleAnswered: (state) => {
             state.answered = true;
-            state.booleanChoices.forEach((val, i) => {
+            state.booleanChoices.forEach((_, i) => {
                 i === state.correctButtonId ? state.booleanChoices[i] = true : state.booleanChoices[i] = false;
             })
         },
         setCorrectState: (state, action) => {
             state.correct = action.payload;
-        }
+        },
     }
 })
 

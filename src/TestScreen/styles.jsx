@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     continueButton: {
-        
         width: 40,
         height: 20,
     },
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: '700',
         color: 'white',
-    },   
+    },
 })
 
 export default styles;

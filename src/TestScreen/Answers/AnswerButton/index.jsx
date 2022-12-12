@@ -12,9 +12,6 @@ const AnswerButton = ({id}) => {
     
     //Redux
     const dispatch = useDispatch();
-    const questionNumber = useSelector((state) => state.testScreen.questionNumber);
-    const maxQuestions = useSelector((state) => state.testScreen.maxQuestions);
-    const currentAnswer = useSelector((state) => state.testScreen.currentAnswer);
     const choice = useSelector((state) => state.testScreen.choices[id]);
     const correctButtonId = useSelector((state) => state.testScreen.correctButtonId);
     const answered = useSelector((state) => state.testScreen.answered);
@@ -22,7 +19,7 @@ const AnswerButton = ({id}) => {
 
     const answerTapped = () => {
         if (id == correctButtonId) {
-            dispatch(increaseScore());
+            dispatch(increaseScore(1));
             dispatch(setCorrectState(true));
         }
         else {
