@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 10,  
         elevation: 20,
-        backgroundColor: 'gray',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#ffffff',
     },
     answerText: {
         fontSize: 21,

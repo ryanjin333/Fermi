@@ -47,7 +47,7 @@ const AnswerButton = ({id}) => {
         <TouchableOpacity 
             style={[
                 styles.answerButton,
-                {backgroundColor: booleanChoice ? '#ffffff' : '#ffffff50'}
+                {opacity: booleanChoice ? 1 : 0.5}
             ]} 
             onPress={answerTapped}
             disabled={answered}

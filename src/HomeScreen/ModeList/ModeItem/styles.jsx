@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
         shadowColor: '#00000050',
         shadowOffset: { width: 0, height: 7 },
         shadowOpacity: 1,
-        shadowRadius: 13,  
-        elevation: 10,
+        shadowRadius: 13,
+        backgroundColor: 'white',  
+        elevation: 20,
     },  
     modeItemBackground: {
         position: 'absolute',
