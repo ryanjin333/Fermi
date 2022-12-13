@@ -98,8 +98,6 @@ const TextBoxAnswer = (props) => {
                                 </Text>
                         </View>
                     )
-                        
-                        
                     }
                 </View>
             )

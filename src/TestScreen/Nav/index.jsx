@@ -1,6 +1,7 @@
 import { View, TouchableOpacity, Image, Text } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useNavigation } from "@react-navigation/native";
+import * as Linking from 'expo-linking';
 import { useDispatch, useSelector } from "react-redux";
 import { resetAllQ, toggleAnswered } from "../TestScreenSlice";
 import styles from "./styles";
@@ -46,7 +47,9 @@ const Nav = () => {
                 </Text>
             )}
             </CountdownCircleTimer>
-            <TouchableOpacity style={styles.infoContainer} onPress={() => navigation.navigate("Info")}>
+            <TouchableOpacity style={styles.infoContainer} onPress={() => 
+                Linking.openURL('https://scioly.org/wiki/index.php/Fermi_Questions')
+            }>
                 <Image style={styles.infoImage} source={require("../../../assets/Info.png")}/>
             </TouchableOpacity>
         </View>

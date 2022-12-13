@@ -17,6 +17,11 @@ const Data = [
                 cellName: 'Terms and Conditions',
                 link: 'https://daytrackernwss.github.io/termsAndConditions.html',
             },
+            {
+                id: '3',
+                cellName: 'Info',
+                link: 'https://scioly.org/wiki/index.php/Fermi_Questions',
+            },
         ],
     }
 ];
