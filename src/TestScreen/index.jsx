@@ -6,6 +6,7 @@ import {
     TouchableOpacity, 
     TouchableWithoutFeedback, 
     Keyboard } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSelector, useDispatch } from "react-redux";
 import { getQuestion } from "./TestScreenSlice";
@@ -54,6 +55,7 @@ const TestScreen = ({navigation, route}) => {
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}
             >
+            <SafeAreaView style={styles.safeAreaContainer} edges={['right', 'left', 'top']}>
                 <Nav />
                 <View style={styles.infoContainer}>
                     <Text style={styles.questionCounter}>question {questionNumber} of {maxQuestions}</Text>
@@ -63,9 +65,10 @@ const TestScreen = ({navigation, route}) => {
                         </TouchableOpacity>
                     }
                 </View>
-                <Text style={styles.question}>{currentQuestion}</Text>
+                <Text style={styles.question} adjustsFontSizeToFit={true} numberOfLines={4}>{currentQuestion}</Text>
                 <TextBoxAnswer inputText={inputText} />
                 <Answers/>
+            </SafeAreaView>
             </LinearGradient>
         </TouchableWithoutFeedback>
     )

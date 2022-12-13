@@ -6,9 +6,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 40,
     },
+    safeAreaContainer: {
+        width: '100%',
+        height: '100%',
+    },
     redoButton: {
-        position: 'absolute',
-        marginTop: 675,
+        marginTop: '80%',
         height: 60,
         width: '100%',
         borderRadius: 20,   

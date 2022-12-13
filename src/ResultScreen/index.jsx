@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
 import { resetAllQ } from "../TestScreen/TestScreenSlice";
@@ -23,10 +23,12 @@ const ResultScreen = ({navigation, route}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
         >
+            <SafeAreaView style={styles.safeAreaContainer}>
             <ScoreInfo />
             <TouchableOpacity style={styles.redoButton} onPress={exitTapped}>
                 <Text style={[styles.redoText, {color: endColor}]}>Exit</Text>
             </TouchableOpacity>
+            </SafeAreaView>
         </LinearGradient>
     )
 }

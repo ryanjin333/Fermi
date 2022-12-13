@@ -62,7 +62,6 @@ const testScreenSlice = createSlice({
             state.answered = false;
             state.booleanChoices = [true, true, true];
             state.timerKey += 1;
-            //TODO: Delete not working
             delete state.questions[state.currentQuestion];
         },
         increaseScore: (state, action) => {

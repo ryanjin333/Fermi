@@ -2,8 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     navContainer: {
-        position: 'absolute',
-        marginTop: 70,
+        marginTop: 23,
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 
 const styles = StyleSheet.create({
     backgroundContainer: {
@@ -10,10 +10,11 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
+        marginTop: StatusBar.currentHeight,
     },
     settingsIcon: {
         marginTop: 13,
-        marginRight: 30,
+        marginRight: 20,
         alignItems: 'flex-end',
     },
     settingsIconImage: {

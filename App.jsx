@@ -8,6 +8,7 @@ import TestScreen from './src/TestScreen';
 import InfoScreen from './src/InfoScreen';
 import store from './src/store';
 import ResultScreen from './src/ResultScreen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default App = () => {
 
@@ -15,34 +16,36 @@ export default App = () => {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen 
-            name="Home"
-            component={HomeScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Settings"
-            component={SettingsScreen}
-          />
-          <Stack.Screen
-            name="Test"
-            component={TestScreen}
-            options={{headerShown: false, gestureEnabled: false}}
-          />
-          <Stack.Screen
-            name="Info"
-            component={InfoScreen}
-            //options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Result"
-            component={ResultScreen}
-            options={{headerShown: false, gestureEnabled: false}}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen 
+              name="Home"
+              component={HomeScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={SettingsScreen}
+            />
+            <Stack.Screen
+              name="Test"
+              component={TestScreen}
+              options={{headerShown: false, gestureEnabled: false}}
+            />
+            <Stack.Screen
+              name="Info"
+              component={InfoScreen}
+              //options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Result"
+              component={ResultScreen}
+              options={{headerShown: false, gestureEnabled: false}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

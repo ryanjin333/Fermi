@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 const styles = StyleSheet.create({
     screenContainer: {
@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     answersContainer: {
-        position: 'absolute',
         width: '100%',
-        marginTop: 440,
+        marginTop: Dimensions.get('window').height <= 736 ? 0 : 50,
         alignItems: 'center',
     },
     multipleChoiceContainer: {
@@ -17,7 +16,7 @@ const styles = StyleSheet.create({
     },  
     result: {
         color: 'white',
-        marginTop: 30,
+        marginTop: Dimensions.get('window').height <= 736 ? 20 : 30,
     },
 })
 
